@@ -1,1 +1,45 @@
 #This file contains most of the code for cleaning and sorting data in R for the Kaggle Contest - Titanic - Machine Learning from Disaster
+
+#Snippets here are referred from the Kaggle contest tutorial
+
+#New function for Reading CSV files
+readData <- function(path.name, file.name, column.types, missing.types) {
+  read.csv( url( paste(path.name, file.name, sep="") ), 
+            colClasses=column.types,
+            na.strings=missing.types )
+}
+
+# Code the path for the data
+Titanic.path <- "http://www.kaggle.com/c/titanic-gettingStarted/data"
+train.data.file <- "train.csv"
+test.data.file <- "test.csv"
+missing.types <- c("NA", "")
+train.column.types <- c('integer',   # PassengerId
+                        'factor',    # Survived 
+                        'factor',    # Pclass
+                        'character', # Name
+                        'factor',    # Sex
+                        'numeric',   # Age
+                        'integer',   # SibSp
+                        'integer',   # Parch
+                        'character', # Ticket
+                        'numeric',   # Fare
+                        'character', # Cabin
+                        'factor'     # Embarked
+)
+test.column.types <- train.column.types[-2]     # # no Survived column in test.csv
+
+
+# Reading the CSV files code
+train.raw <- readData(Titanic.path, train.data.file, 
+                      train.column.types, missing.types)
+df.train <- train.raw
+
+test.raw <- readData(Titanic.path, test.data.file, 
+                     test.column.types, missing.types)
+df.infer <- test.raw 
+
+
+## Getting to the Data Munging Operation
+
+
