@@ -1,0 +1,10 @@
+body {
+  margin: 0px;
+  overflow: hidden;
+}
+
+path {
+  fill: rgb(245, 182, 89);
+  stroke: rgb(244, 237, 237);
+  stroke-opacity: 0.2;
+}
